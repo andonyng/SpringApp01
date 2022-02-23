@@ -1,0 +1,2 @@
+netstat -ano | findstr 8080
+TASKKILL /F /PID (PID del proceso)
