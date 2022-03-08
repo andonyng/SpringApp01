@@ -1,47 +1,45 @@
 package com.andonyng.SpringApp01.controllers;
 
+import com.andonyng.SpringApp01.dao.UsuarioDao;
 import com.andonyng.SpringApp01.models.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class UsuarioController {
 
+    @Autowired
+    private UsuarioDao usuarioDao;
+
     /* URL "/usuario" */
-    @RequestMapping(value = "usuario/{id}")
+    @RequestMapping(value = "api/usuario/{id}", method = RequestMethod.GET)
     public Usuario getUsuario(@PathVariable long id) {
-        Usuario usuario = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242",id);
-        return usuario;
+        return usuarioDao.getUsuario(id);
     }
 
-    @RequestMapping(value = "listado")
+    @RequestMapping(value = "api/listado")
     public List<Usuario> getListado() {
-        List<Usuario> listaUsuarios = new ArrayList<>();
-        Usuario usuario1 = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242",1);
-        Usuario usuario2 = new Usuario("andony2002","603100723","locoforeverywhere@gmail.com","jjj_200242",2);
-        Usuario usuario3 = new Usuario("locoflipon","603100724","locoforeverywhere2@gmail.com","ggg$$eznoob",3);
-        listaUsuarios.add(usuario1);
-        listaUsuarios.add(usuario2);
-        listaUsuarios.add(usuario3);
-        return listaUsuarios;
+        return usuarioDao.getUsuarios();
+    }
+
+
+    @RequestMapping(value = "api/delete/usuario/{id}", method = RequestMethod.DELETE)
+    public void eliminar(@PathVariable long id) {
+        usuarioDao.eliminarUsuario(id);
     }
 
    /* @RequestMapping(value = "usuario")
     public Usuario modificar() {
         Usuario usuario = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242");
         return usuario;
-    }
+    }*/
 
-    @RequestMapping(value = "usuario")
-    public Usuario eliminar() {
-        Usuario usuario = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242");
-        return usuario;
-    }
-
+    /*
     @RequestMapping(value = "usuario")
     public Usuario buscar() {
         Usuario usuario = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242");

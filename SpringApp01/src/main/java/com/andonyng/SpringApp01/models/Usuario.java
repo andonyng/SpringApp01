@@ -1,11 +1,24 @@
 package com.andonyng.SpringApp01.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
 
+    @Id
+    @Column (name = "username")
     private String username;
+    @Column (name = "telephone")
     private String telephone;
+    @Column (name = "email")
     private String email;
+    @Column (name = "password")
     private String password;
+    @Column (name = "id")
     private long id;
 
     public Usuario(){}
