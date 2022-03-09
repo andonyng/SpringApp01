@@ -35,8 +35,8 @@ async function cargarUsuarios() {
 }
 
 async function eliminarUsuario(id) {
-    const request = await fetch('api/delete/usuario/' + id, {
-        method: 'DELETE',
+    const request = await fetch('api/usuario/' + id, {
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

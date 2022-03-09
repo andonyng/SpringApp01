@@ -16,7 +16,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioDao usuarioDao;
 
-    /* URL "/usuario" */
     @RequestMapping(value = "api/usuario/{id}", method = RequestMethod.GET)
     public Usuario getUsuario(@PathVariable long id) {
         return usuarioDao.getUsuario(id);
@@ -28,10 +27,13 @@ public class UsuarioController {
     }
 
 
-    @RequestMapping(value = "api/delete/usuario/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "api/usuario/{id}", method = RequestMethod.POST)
     public void eliminar(@PathVariable long id) {
         usuarioDao.eliminarUsuario(id);
     }
+
+
+
 
    /* @RequestMapping(value = "usuario")
     public Usuario modificar() {
