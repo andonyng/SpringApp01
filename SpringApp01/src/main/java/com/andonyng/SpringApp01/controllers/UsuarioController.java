@@ -22,7 +22,7 @@ public class UsuarioController {
         return usuarioDao.getUsuario(id);
     }
 
-    @RequestMapping(value = "api/listado")
+    @RequestMapping(value = "api/listado", method = RequestMethod.GET)
     public List<Usuario> getListado() {
         return usuarioDao.getUsuarios();
     }
