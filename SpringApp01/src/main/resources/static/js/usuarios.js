@@ -35,6 +35,9 @@ async function cargarUsuarios() {
 }
 
 async function eliminarUsuario(id) {
+    if (!confirm('¿Eliminar el usuario ' + id + '?')) {
+        return;
+    }
     const request = await fetch('api/usuario/' + id, {
         method: 'POST',
         headers: {
@@ -42,5 +45,5 @@ async function eliminarUsuario(id) {
           'Content-Type': 'application/json'
         }
       });
-      alert(id);
+    location.reload();
 }
