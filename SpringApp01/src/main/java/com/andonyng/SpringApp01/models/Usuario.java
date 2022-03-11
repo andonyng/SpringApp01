@@ -10,6 +10,8 @@ import javax.persistence.Table;
 public class Usuario {
 
     @Id
+    @Column (name = "id")
+    private long id;
     @Column (name = "username")
     private String username;
     @Column (name = "telephone")
@@ -18,8 +20,6 @@ public class Usuario {
     private String email;
     @Column (name = "password")
     private String password;
-    @Column (name = "id")
-    private long id;
 
     public Usuario(){}
 
