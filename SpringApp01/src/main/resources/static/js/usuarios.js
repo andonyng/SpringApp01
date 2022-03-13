@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 async function cargarUsuarios() {
-      const request = await fetch('api/listado', {
+      const request = await fetch('api/usuario/listado', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -18,6 +18,12 @@ async function cargarUsuarios() {
       for (let usuario of usuarios) {
 
         let botonEliminar = '<a href="#" onclick="eliminarUsuario(' + usuario.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
+
+        let telefono = usuario.telephone;
+
+        if (telefono == null) {
+            telefono = '';
+        }
 
         let usuarioHtml = '<tr><td>'+usuario.username
         +'</td><td>'+usuario.telephone

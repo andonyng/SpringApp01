@@ -1,15 +1,13 @@
 package com.andonyng.SpringApp01.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private long id;
     @Column (name = "username")
@@ -23,12 +21,11 @@ public class Usuario {
 
     public Usuario(){}
 
-    public Usuario(String username, String telephone, String email, String password, long id) {
+    public Usuario(String username, String telephone, String email, String password) {
         this.username = username;
         this.telephone = telephone;
         this.email = email;
         this.password = password;
-        this.id = id;
     }
 
     public String getUsername() {

@@ -3,10 +3,7 @@ package com.andonyng.SpringApp01.controllers;
 import com.andonyng.SpringApp01.dao.UsuarioDao;
 import com.andonyng.SpringApp01.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,9 +18,9 @@ public class UsuarioController {
         return usuarioDao.getUsuario(id);
     }
 
-    @RequestMapping(value = "api/listado", method = RequestMethod.GET)
+    @RequestMapping(value = "api/usuario/listado", method = RequestMethod.GET)
     public List<Usuario> getListado() {
-        return usuarioDao.getUsuarios();
+        return usuarioDao.getListado();
     }
 
 
@@ -32,20 +29,10 @@ public class UsuarioController {
         usuarioDao.eliminarUsuario(id);
     }
 
+    @RequestMapping(value = "api/usuario/crear", method = RequestMethod.POST)
+    public void crear(@RequestBody Usuario usuario) {
+        usuarioDao.crearUsuario(usuario);
+    }
 
-
-
-   /* @RequestMapping(value = "usuario")
-    public Usuario modificar() {
-        Usuario usuario = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242");
-        return usuario;
-    }*/
-
-    /*
-    @RequestMapping(value = "usuario")
-    public Usuario buscar() {
-        Usuario usuario = new Usuario("elevenloco","603100722","andony.ng.11@gmail.com","Andony200242");
-        return usuario;
-    }*/
 
 }
