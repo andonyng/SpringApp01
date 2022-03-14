@@ -17,7 +17,7 @@ async function registrarUsuario() {
         return;
     }
 
-     const request = await fetch('api/usuario/crear', {
+    const request = await fetch('api/usuario/crear', {
              method: 'POST',
              headers: {
                'Accept': 'application/json',
@@ -25,4 +25,7 @@ async function registrarUsuario() {
              },
              body: JSON.stringify(datos)
            });
+
+    alert('La cuenta ha sido creada existosamente.');
+    window.location.href = 'login.html';
 }

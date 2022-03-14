@@ -14,4 +14,5 @@ public interface UsuarioDao {
 
     void crearUsuario(Usuario usuario);
 
+    boolean verificar(Usuario usuario);
 }
