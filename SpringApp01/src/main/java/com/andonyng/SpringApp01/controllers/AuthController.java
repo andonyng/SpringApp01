@@ -24,7 +24,7 @@ public class AuthController {
         Usuario usuarioVerificado = usuarioDao.getByCredenciales(usuario); //Obtenemos el usuario si ha sido verificado
 
         if (usuarioVerificado == null) {
-            return String.valueOf(null); //Si no se ha podido verificar el usuario retorna "null"
+            return "null"; //Si no se ha podido verificar el usuario retorna "null"
         }
 
         String token = jwtUtil.create(String.valueOf(usuarioVerificado.getId()),

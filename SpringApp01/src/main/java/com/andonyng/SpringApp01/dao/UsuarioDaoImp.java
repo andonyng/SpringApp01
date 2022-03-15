@@ -48,6 +48,7 @@ public class UsuarioDaoImp implements UsuarioDao {
                 .setParameter("email", usuario.getEmail())
                 .getResultList();
 
+        //Retorna null si no existe usuario con el email proporcionado
         if (result.isEmpty()) {
             return null;
         }

@@ -8,13 +8,14 @@ async function iniciarSesion() {
     datos.email = document.getElementById('StringEmail').value;
     datos.password = document.getElementById('StringPassword').value;
 
-     const request = await fetch('api/login', {
+    //Convertimos a JSON la variable datos y la mandamos en el body de la petición en la línea 18
+    const request = await fetch('api/login', {
              method: 'POST',
              headers: {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
              },
-             body: JSON.stringify(datos) //Convertimos a JSON la variable datos y la mandamos en el body de la petición (request)
+             body: JSON.stringify(datos)
            });
      const response = await request.text(); //La respuesta que recibimos tras hacer la petición al servidor
 
