@@ -4,15 +4,16 @@ import com.andonyng.SpringApp01.models.Usuario;
 
 import java.util.List;
 
+//Interfaz capa DAO
 public interface UsuarioDao {
 
     Usuario getUsuario(long id);
 
-    List<Usuario> getListado();
+    List<Usuario> getListadoUsuarios();
 
     void eliminarUsuario(long id);
 
     void crearUsuario(Usuario usuario);
 
-    boolean verificar(Usuario usuario);
+    Usuario getByCredenciales(Usuario usuario);
 }

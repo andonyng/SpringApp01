@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+//Implementación capa DAO
 @Repository
 @Transactional
 public class UsuarioDaoImp implements UsuarioDao {
@@ -23,7 +24,7 @@ public class UsuarioDaoImp implements UsuarioDao {
     }
 
     @Override
-    public List<Usuario> getListado() {
+    public List<Usuario> getListadoUsuarios() {
         String query = "from Usuario";
         return entityManager.createQuery(query).getResultList();
     }
@@ -40,7 +41,7 @@ public class UsuarioDaoImp implements UsuarioDao {
     }
 
     @Override
-    public boolean verificar(Usuario usuario) {
+    public Usuario getByCredenciales(Usuario usuario) {
         //Como estamos usando argon2 para cifrar contraseñas, solo verificamos el email en la consulta SQL
         String query = "FROM Usuario WHERE email = :email";
         List<Usuario> result = entityManager.createQuery(query)
@@ -48,7 +49,7 @@ public class UsuarioDaoImp implements UsuarioDao {
                 .getResultList();
 
         if (result.isEmpty()) {
-            return false;
+            return null;
         }
 
         //A continuación si que verificamos la contraseña cifrada
@@ -59,7 +60,11 @@ public class UsuarioDaoImp implements UsuarioDao {
         //Aquí comparamos la contraseña del usuario en la base de datos con
         //la proporcionada en la pantalla de login
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        return argon2.verify(hashedPassword, usuario.getPassword());
+        if (argon2.verify(hashedPassword, usuario.getPassword())) {
+            return result.get(0);
+        } else {
+            return null;
+        }
     }
 
 }

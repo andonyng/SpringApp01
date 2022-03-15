@@ -2,10 +2,16 @@ package com.andonyng.SpringApp01.models;
 
 import javax.persistence.*;
 
+//Modelo de datos "Usuario
+//Con @Entity indicamos que es una entidad
+//Con @Table indicamos la tabla a la que equivale la entidad en la base de datos
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 
+    //Con @Id indicamos el campo que sirve como Id
+    //Con @GeneratedValue indicamos que es un campo que se genera automáticamente (En este caso el id es AutoIncrement)
+    //Con @Column vamos indicando a que columna equivale cada atributo en la tabla de la base de datos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
